@@ -1,2 +1,2 @@
 # SWE402-Work
-This repo will contain all SWE402 work
+This repo will containt some of SWE402 work
