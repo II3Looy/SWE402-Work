@@ -1,10 +1,13 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.Serialization;
 
 public class WallObject : CellObject
 {
-   public Tile ObstacleTile;
-   public int MaxHealth = 3;
+   [FormerlySerializedAs("ObstacleTile")]
+   [SerializeField] private Tile m_ObstacleTile;
+   [FormerlySerializedAs("MaxHealth")]
+   [SerializeField, Range(1, 10)] private int m_MaxHealth = 3;
 
    private int m_HealthPoint;
    private Tile m_OriginalTile;
@@ -13,15 +16,16 @@ public class WallObject : CellObject
    {
        base.Init(cell);
 
-       m_HealthPoint = MaxHealth;
+       m_HealthPoint = m_MaxHealth;
       
        m_OriginalTile = GameManager.Instance.BoardManager.GetCellTile(cell);
-       GameManager.Instance.BoardManager.SetCellTile(cell, ObstacleTile);
+       GameManager.Instance.BoardManager.SetCellTile(cell, m_ObstacleTile);
    }
 
    public override bool PlayerWantsToEnter()
    {
        m_HealthPoint -= 1;
+       GameManager.Instance.PlayWallAttackSfx();
 
        if (m_HealthPoint > 0)
        {
@@ -29,7 +33,8 @@ public class WallObject : CellObject
        }
 
        GameManager.Instance.BoardManager.SetCellTile(m_Cell, m_OriginalTile);
-       Destroy(gameObject);
+       GameManager.Instance.PlayWallDestroyVfx(transform.position);
+       GameManager.Instance.BoardManager.RecycleObject(this);
        return true;
    }
 }

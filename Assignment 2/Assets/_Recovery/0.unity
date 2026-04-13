@@ -152,19 +152,6 @@ MonoBehaviour:
   m_PlayerController: {fileID: 260822561}
   m_StartingFood: 20
   m_UIDoc: {fileID: 471132837}
-  m_PlayerMoveSfx: {fileID: 8300000, guid: 892962212a4b74d1c9f578a3b6ea6439, type: 3}
-  m_WallAttackSfx: {fileID: 8300000, guid: f6aaac83be9e0493493aace800b76619, type: 3}
-  m_FoodPickupSfx: {fileID: 8300000, guid: 1cb61f83d60374c7389bb547431919e3, type: 3}
-  m_EnemyAttackSfx: {fileID: 8300000, guid: 0db8cac2749584a009540aa5671ee80d, type: 3}
-  m_EnemyDeathSfx: {fileID: 8300000, guid: e2beefeb2273f4efe992adf5b8d67c29, type: 3}
-  m_GameOverSfx: {fileID: 8300000, guid: bcb9dda73ee914d3e8f252895f73f461, type: 3}
-  m_DefaultSfxVolume: 1
-  m_WallDestroyVfxPrefab: {fileID: 7785591216980037473, guid: 0c049657b2c0f404381953ba0536e7ec, type: 3}
-  m_FoodCollectVfxPrefab: {fileID: 3189640691512232625, guid: d8bbdf4fd62e24543af77c6c322656a0, type: 3}
-  m_EnemyDeathVfxPrefab: {fileID: 4575122626130075458, guid: 6ac9f1c983550484081911022a86225b, type: 3}
-  m_WallDestroyVfxPoolSize: 6
-  m_FoodCollectVfxPoolSize: 8
-  m_EnemyDeathVfxPoolSize: 6
 --- !u!4 &139338495
 Transform:
   m_ObjectHideFlags: 0
@@ -787,19 +774,10 @@ MonoBehaviour:
   m_WallPrefab: {fileID: 7483997954727945713, guid: 6d28b2e29aa2041eb81b58b5680863f7, type: 3}
   m_ExitCellPrefab: {fileID: 6958778538120050727, guid: 910a46a9136d94bed8f9aeb790bcc35d, type: 3}
   m_EnemyPrefab: {fileID: 4653994787711244808, guid: fc10997d539fc469e98abfc96f5c892c, type: 3}
-  m_Width: 8
-  m_Height: 8
-  m_GroundTiles:
-  - {fileID: 11400000, guid: a4094e5a660d94568b8a7e7368323682, type: 2}
-  - {fileID: 11400000, guid: 21a277547dc5244cbabf6b4bd37723fc, type: 2}
-  - {fileID: 11400000, guid: 466a2adf27ccb4873ae324fd111dd475, type: 2}
-  - {fileID: 11400000, guid: 0e335a3603cd040deb39aff4b5b754bc, type: 2}
-  - {fileID: 11400000, guid: a88d16093b5a0467eab6f92d1cd83334, type: 2}
-  - {fileID: 11400000, guid: c68f6550ec3614b99a7212e08eeea8a6, type: 2}
-  - {fileID: 11400000, guid: bfb9afabbef6f4a908131cf1770dcc70, type: 2}
-  - {fileID: 11400000, guid: cef72641137bc412ba8d831606751d42, type: 2}
-  m_WallTiles:
-  - {fileID: 11400000, guid: a10afd9ee6c0c4841a4ba9408c393c07, type: 2}
+  m_Width: 16
+  m_Height: 16
+  m_GroundTiles: []
+  m_WallTiles: []
   m_FoodCount: 5
   m_MinWallCount: 6
   m_MaxWallCount: 10

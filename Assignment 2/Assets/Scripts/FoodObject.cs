@@ -1,13 +1,15 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 public class FoodObject : CellObject
 {
-   public int AmountGranted = 10;
+   [FormerlySerializedAs("AmountGranted")]
+   [SerializeField, Range(1, 50)] private int m_AmountGranted = 10;
 
    public override void PlayerEntered()
    {
-       Destroy(gameObject);
-    
-       //increase food
-       GameManager.Instance.ChangeFood(AmountGranted);
+       GameManager.Instance.PlayFoodPickupSfx();
+       GameManager.Instance.PlayFoodCollectVfx(transform.position);
+       GameManager.Instance.ChangeFood(m_AmountGranted);
+       GameManager.Instance.BoardManager.RecycleObject(this);
    }
 }
