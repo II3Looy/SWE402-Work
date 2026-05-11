@@ -132,14 +132,6 @@ the edges fringe slightly (Chromatic Aberration). Die — the edges darken
 
 ---
 
-## Section 7 — Written Report
-
-This document **is** the written report. Per-section summaries above describe
-what was added, where the implementation lives, and how to observe it in play
-mode. Screenshots can be added to `Docs/` if required for submission.
-
----
-
 ## File map (new + modified)
 
 **New scripts (`Assets/Scripts/`):**
@@ -159,68 +151,3 @@ mode. Screenshots can be added to `Docs/` if required for submission.
 - `PlayerController.cs` — raises `OnPowerupActivated/Deactivated`,
   `OnPlayerHitEnemy`, calls `PickupVFX.PlayAt`, and calls `EnemyVisuals.Flash`
   on the enemy it hits while powered up.
-
----
-
-## Setup checklist (Unity Editor work required)
-
-The following actions must be done inside the Unity Editor — once these are
-wired, every system above starts functioning together:
-
-### Scene-level setup
-1. **Main Camera**
-   - Add component `CameraShake`.
-   - Add component `CameraEffects`.
-   - Enable **Post Processing** in the camera's Inspector (Rendering section).
-2. **Global Volume**
-   - In the Hierarchy: `GameObject > Volume > Global Volume`.
-   - Set its Profile to `Assets/Settings/DefaultVolumeProfile.asset`.
-   - In the profile, make sure **Bloom**, **Vignette**, and **Chromatic Aberration**
-     overrides exist and their checkboxes (and the `intensity` checkboxes
-     inside them) are enabled.
-   - Add component `PostFXController` to the Global Volume GameObject.
-3. **Directional Light**
-   - Add component `WaveLightIntensity`. Confirm `baseIntensity` matches the
-     light's starting intensity.
-4. **Arena edge lights (optional but recommended for Section 2)**
-   - Add 1–2 `Point Lights` near the edges of the arena (or one over the
-     powerup spawn).
-   - Add component `LightFlicker` to them.
-5. **PickupVFX manager**
-   - Create an empty GameObject named `VFX Manager` and add `PickupVFX`.
-
-### Player setup
-6. **Player GameObject**
-   - Add component `PlayerTrailVFX`.
-   - Create a child ParticleSystem (looping, small, colored to match player) and
-     drag it onto the `trail` slot of `PlayerTrailVFX`.
-
-### Enemy setup
-7. **Enemy prefab (`Assets/Prefabs/Enemy.prefab`)**
-   - Add component `EnemyVisuals`.
-   - Adjust `baseColor` and `maxWaveColor` in the inspector if desired.
-
-### Particle prefabs to create (any quick stylized burst works)
-8. **Powerup pickup burst**
-   - Create a Particle System prefab (e.g., yellow burst with ~30 particles,
-     0.5s lifetime, radial velocity). Save as
-     `Assets/Prefabs/PowerupPickupBurst.prefab`.
-   - Drag it onto `PickupVFX.burstPrefab` on the VFX Manager.
-
-### Optional but recommended
-9. **Powerup material**
-   - Duplicate the existing Powerup material, switch it to URP/Lit, enable
-     **Emission**, pick a glowing color. With Bloom enabled in the Volume, the
-     powerup will visibly glow — this satisfies Section 1's
-     materials-with-emission requirement on top of the scripted tinting.
-
-Once steps 1–8 are done, hit Play. You should see:
-- Camera shake on impact / game over
-- FOV pulse on powerup + slow zoom-out across waves
-- Bloom + Chromatic Aberration spike during powerup
-- Vignette darken on game over
-- Enemies redder per wave, flashing white when hit
-- Particle trail while moving
-- Particle burst on pickup
-- Directional light slowly warming and brightening per wave
-- Optional flicker on edge point lights
