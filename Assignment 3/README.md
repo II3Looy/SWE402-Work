@@ -132,14 +132,6 @@ the edges fringe slightly (Chromatic Aberration). Die — the edges darken
 
 ---
 
-## Section 7 — Written Report
-
-This document **is** the written report. Per-section summaries above describe
-what was added, where the implementation lives, and how to observe it in play
-mode. Screenshots can be added to `Docs/` if required for submission.
-
----
-
 ## File map (new + modified)
 
 **New scripts (`Assets/Scripts/`):**
